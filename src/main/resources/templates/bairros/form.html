@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${bairro.id} == null ? 'Novo bairro' : 'Editar bairro'">Bairro</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: menu}"></div>
+
+<h1 th:text="${bairro.id} == null ? 'Novo bairro' : 'Editar bairro'">Bairro</h1>
+
+<form th:action="@{/bairros}" th:object="${bairro}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Nome:
+        <input type="text" th:field="*{nome}" maxlength="80" size="40">
+    </label>
+    <span class="erro" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+
+    <label>Zona:
+        <select th:field="*{zona}">
+            <option value="">Selecione...</option>
+            <option th:each="z : ${zonas}" th:value="${z}" th:text="${z}"></option>
+        </select>
+    </label>
+    <span class="erro" th:if="${#fields.hasErrors('zona')}" th:errors="*{zona}"></span>
+
+    <label>População:
+        <input type="number" th:field="*{populacao}" min="0">
+    </label>
+    <span class="erro" th:if="${#fields.hasErrors('populacao')}" th:errors="*{populacao}"></span>
+
+    <div>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/bairros}">Cancelar</a>
+    </div>
+
+</form>
+
+</body>
+</html>

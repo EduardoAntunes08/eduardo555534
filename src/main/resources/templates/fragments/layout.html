@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<body>
+
+<nav th:fragment="menu">
+    <a th:href="@{/}">Início</a> |
+    <a th:href="@{/bairros}">Bairros</a> |
+    <a th:href="@{/trechos}">Trechos</a> |
+    <a th:href="@{/leituras}">Leituras</a>
+</nav>
+
+<div th:fragment="mensagens">
+    <p class="sucesso" th:if="${mensagem}" th:text="${mensagem}"></p>
+    <p class="erro" th:if="${erro}" th:text="${erro}"></p>
+</div>
+
+</body>
+</html>

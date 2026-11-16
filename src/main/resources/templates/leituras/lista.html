@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Leituras</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: menu}"></div>
+
+<h1>Leituras</h1>
+
+<div th:replace="~{fragments/layout :: mensagens}"></div>
+
+<p><a th:href="@{/leituras/novo}">Nova leitura</a></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Data e hora</th>
+        <th>Trecho</th>
+        <th>Lâmina (cm)</th>
+        <th>Situação</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="l : ${leituras}">
+        <td th:text="${l.dataHoraFormatada}"></td>
+        <td th:text="${l.trechoLogradouro}"></td>
+        <td th:text="${l.lamina}"></td>
+        <td th:text="${l.situacao}" th:class="${l.situacao}"></td>
+        <td class="acoes">
+            <a th:href="@{/leituras/{id}/editar(id=${l.id})}">Editar</a>
+            <form th:action="@{/leituras/{id}/excluir(id=${l.id})}" method="post">
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(leituras)}">
+        <td colspan="5">Nenhuma leitura cadastrada.</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

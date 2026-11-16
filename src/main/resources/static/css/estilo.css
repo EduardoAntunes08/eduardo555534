@@ -1,0 +1,72 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 24px;
+    color: #222;
+}
+
+nav {
+    margin-bottom: 16px;
+    font-size: 14px;
+}
+
+h1 {
+    font-size: 22px;
+}
+
+table {
+    border-collapse: collapse;
+    margin-top: 12px;
+}
+
+th, td {
+    border: 1px solid #bbb;
+    padding: 6px 10px;
+    font-size: 14px;
+    text-align: left;
+}
+
+th {
+    background: #eee;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+input, select {
+    padding: 4px;
+    font-size: 14px;
+}
+
+button {
+    margin-top: 16px;
+    padding: 6px 14px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.erro {
+    color: #c00;
+    font-size: 13px;
+}
+
+.sucesso {
+    color: #060;
+    font-size: 13px;
+}
+
+.rodape {
+    margin-top: 32px;
+    font-size: 12px;
+    color: #777;
+}
+
+.acoes form {
+    display: inline;
+}
+
+.ALERTA { color: #c00; font-weight: bold; }
+.ATENCAO { color: #c67100; font-weight: bold; }
+.NORMAL { color: #060; }

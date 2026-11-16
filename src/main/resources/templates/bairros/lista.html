@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Bairros</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: menu}"></div>
+
+<h1>Bairros</h1>
+
+<div th:replace="~{fragments/layout :: mensagens}"></div>
+
+<p><a th:href="@{/bairros/novo}">Novo bairro</a></p>
+
+<table>
+    <thead>
+    <tr>
+        <th>Nome</th>
+        <th>Zona</th>
+        <th>População</th>
+        <th>Ações</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="b : ${bairros}">
+        <td th:text="${b.nome}"></td>
+        <td th:text="${b.zona}"></td>
+        <td th:text="${b.populacao}"></td>
+        <td class="acoes">
+            <a th:href="@{/bairros/{id}/editar(id=${b.id})}">Editar</a>
+            <form th:action="@{/bairros/{id}/excluir(id=${b.id})}" method="post">
+                <button type="submit">Excluir</button>
+            </form>
+        </td>
+    </tr>
+    <tr th:if="${#lists.isEmpty(bairros)}">
+        <td colspan="4">Nenhum bairro cadastrado.</td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>

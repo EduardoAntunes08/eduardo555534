@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="${leitura.id} == null ? 'Nova leitura' : 'Editar leitura'">Leitura</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: menu}"></div>
+
+<h1 th:text="${leitura.id} == null ? 'Nova leitura' : 'Editar leitura'">Leitura</h1>
+
+<form th:action="@{/leituras}" th:object="${leitura}" method="post">
+
+    <input type="hidden" th:field="*{id}">
+
+    <label>Trecho:
+        <select th:field="*{trechoId}">
+            <option value="">Selecione...</option>
+            <option th:each="t : ${trechos}" th:value="${t.id}" th:text="${t.logradouro}"></option>
+        </select>
+    </label>
+    <span class="erro" th:if="${#fields.hasErrors('trechoId')}" th:errors="*{trechoId}"></span>
+
+    <label>Data e hora:
+        <input type="datetime-local" th:field="*{dataHora}">
+    </label>
+    <span class="erro" th:if="${#fields.hasErrors('dataHora')}" th:errors="*{dataHora}"></span>
+
+    <label>Lâmina de água (cm):
+        <input type="number" th:field="*{lamina}" min="0" max="300">
+    </label>
+    <span class="erro" th:if="${#fields.hasErrors('lamina')}" th:errors="*{lamina}"></span>
+
+    <p class="rodape">A situação (NORMAL, ATENCAO ou ALERTA) é calculada pelo sistema.</p>
+
+    <div>
+        <button type="submit">Salvar</button>
+        <a th:href="@{/leituras}">Cancelar</a>
+    </div>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Cidade em Dia de Chuva</title>
+    <link rel="stylesheet" th:href="@{/css/estilo.css}">
+</head>
+<body>
+
+<div th:replace="~{fragments/layout :: menu}"></div>
+
+<h1>Cidade em Dia de Chuva</h1>
+<p>Escolha um cadastro no menu acima.</p>
+
+<ul>
+    <li><a th:href="@{/bairros}">Bairros</a> &mdash; nome, zona e população</li>
+    <li><a th:href="@{/trechos}">Trechos de calçada</a> &mdash; logradouro, tipo, altitude e bairro</li>
+    <li><a th:href="@{/leituras}">Leituras</a> &mdash; data e hora, lâmina de água e situação</li>
+</ul>
+
+<p class="rodape">Eduardo &mdash; RM 555534 &mdash; tabelas GS534_ &mdash; limiar de alerta L = 14 cm</p>
+
+</body>
+</html>
